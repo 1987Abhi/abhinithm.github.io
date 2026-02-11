@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modern Portal</title>
+    <style>
+        :root {
+            --primary: #00d4ff;
+            --accent: #090979;
+            --glass: rgba(255, 255, 255, 0.1);
+        }
+
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            font-family: 'Segoe UI', sans-serif;
+            background: #020024;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+        }
+
+        /* The Portal Animation */
+        .portal-ring {
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            border: 2px solid var(--primary);
+            box-shadow: 0 0 50px var(--primary), inset 0 0 50px var(--primary);
+            animation: openPortal 2s ease-out forwards;
+            z-index: 10;
+        }
+
+        @keyframes openPortal {
+            0% { transform: scale(0); opacity: 0; }
+            50% { opacity: 1; }
+            100% { transform: scale(10); opacity: 0; visibility: hidden; }
+        }
+
+        /* Background Gradient Movement */
+        .bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, #020024 0%, #090979 35%, #00d4ff 100%);
+            z-index: -1;
+        }
+
+        /* Main Content Card */
+        .card {
+            background: var(--glass);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 3rem;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInContent 1s ease-out 1.5s forwards;
+            max-width: 400px;
+        }
+
+        @keyframes fadeInContent {
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            letter-spacing: 2px;
+        }
+
+        p {
+            color: #d1d1d1;
+            margin-bottom: 2rem;
+        }
+
+        .btn {
+            background: var(--primary);
+            color: #020024;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 30px;
+            font-weight: bold;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: 0.3s;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 20px var(--primary);
+        }
+
+        /* Decorative Floating Orbs */
+        .orb {
+            position: absolute;
+            width: 150px;
+            height: 150px;
+            background: var(--primary);
+            filter: blur(80px);
+            border-radius: 50%;
+            z-index: -1;
+            animation: float 6s infinite alternate;
+        }
+
+        @keyframes float {
+            from { transform: translate(0, 0); }
+            to { transform: translate(50px, 100px); }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="bg"></div>
+    <div class="portal-ring"></div>
+    <div class="orb" style="top: 10%; left: 20%;"></div>
+    <div class="orb" style="bottom: 10%; right: 20%; background: var(--accent);"></div>
+
+    <div class="card">
+        <h1>WELCOME</h1>
+        <p>Accessing secure neural gateway... Authentication complete.</p>
+        <a href="#" class="btn" onclick="alert('Entering Portal...')">Enter System</a>
+    </div>
+
+</body>
+</html>
